@@ -13,7 +13,7 @@ const initialFormValues = {
   last_name: '',
   email: '',
   password: '',
-  term: false,
+  terms: false,
 }
 const initialFormErrors = {
   name: '',
@@ -32,7 +32,7 @@ function App() {
   const getUser = () => {
     axios.get('https://reqres.in/api/users')
       .then(res => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setUsers(res.data.data);
       })
       .catch(err => console.error(err))
@@ -44,6 +44,8 @@ function App() {
         setUsers([res.data.data, ...users])
       })
       .catch(err => console.error(err))
+
+      setFormValues(initialFormValues);
   }
 
   const validate = (name, value) => {
@@ -60,10 +62,10 @@ function App() {
 
   const formSubmit = () => {
     const newUser = {
-      name: formValues.name.trim(),
+      first_name: formValues.first_name.trim(),
+      last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
-      password: formValues.password.trim(),
-      // terms: terms.filter(term => !!formValues[term])
+      // password: formValues.password.trim(),
     }
     postNewUser(newUser);
   }
@@ -75,7 +77,7 @@ function App() {
   useEffect(() => {
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
-
+// console.log(users);
   return (
     <div className="App">
       <h1>Its Working</h1>
@@ -89,7 +91,8 @@ function App() {
       {
         users.map(user => {
           return (
-            <User key={users.id} details={users} />
+            <User details={user} />
+            
           )
         })
       }
