@@ -24,7 +24,6 @@ export default function Form(props) {
         <>
             <form onSubmit={onSubmit}>
                 <div>
-                    <h2>Add a user</h2>
                     <div className='errors'>
                         <div>{errors.name}</div>
                         <div>{errors.email}</div>
@@ -32,7 +31,7 @@ export default function Form(props) {
                         <div>{errors.terms}</div>
                     </div>
                 </div>
-                <label>First Name
+                <label>{' First Name: '} 
                     <input 
                         type='text'
                         name='first_name'
@@ -40,7 +39,7 @@ export default function Form(props) {
                         onChange={onChange}
                     />
                 </label>
-                <label>Last Name
+                <label>{' Last Name: '} 
                     <input 
                         type='text'
                         name='last_name'
@@ -48,7 +47,7 @@ export default function Form(props) {
                         onChange={onChange}
                     />
                 </label>
-                <label>Email
+                <label>{' Email: '} 
                     <input 
                         type='email'
                         name='email'
@@ -56,7 +55,7 @@ export default function Form(props) {
                         onChange={onChange}
                     />
                 </label>
-                <label>Password
+                <label>{' Password: '} 
                     <input 
                         type='password'
                         name='password'
@@ -64,7 +63,7 @@ export default function Form(props) {
                         onChange={onChange}
                     />
                 </label>
-                <label>Terms of Condition
+                <label>{' Terms and Condition: '}
                     <input 
                         type='checkbox'
                         name='terms'

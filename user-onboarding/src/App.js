@@ -16,7 +16,8 @@ const initialFormValues = {
   terms: false,
 }
 const initialFormErrors = {
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
 }
@@ -41,7 +42,8 @@ function App() {
   const postNewUser = newUser => {
     axios.post('https://reqres.in/api/users', newUser)
       .then(res => {
-        setUsers([res.data.data, ...users])
+        // console.log(res)
+        setUsers([res.data, ...users])
       })
       .catch(err => console.error(err))
 
@@ -62,10 +64,9 @@ function App() {
 
   const formSubmit = () => {
     const newUser = {
-      first_name: formValues.first_name.trim(),
-      last_name: formValues.last_name.trim(),
+      first_name: formValues['first_name'].trim(),
+      last_name: formValues['last_name'].trim(),
       email: formValues.email.trim(),
-      // password: formValues.password.trim(),
     }
     postNewUser(newUser);
   }
@@ -91,7 +92,7 @@ function App() {
       {
         users.map(user => {
           return (
-            <User details={user} />
+            <User key={user.id} details={user} />
             
           )
         })

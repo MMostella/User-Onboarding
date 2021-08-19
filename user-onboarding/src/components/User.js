@@ -5,6 +5,7 @@ const StyledUser = styled.div `
     display: flex;
     justify-content: center;
     margin: 2% auto;
+    height: 150px;
     border: 2px solid lightgray;
     border-radius: 15px;
     width: 50%;
@@ -27,8 +28,8 @@ function User({ details }) {
             <img src={details.avatar} alt='avatar'/>
         </div>
         <div className='userCont'>
-            <h4>First Name: {details.first_name}</h4>
-            <h4>Last Name: {details.last_name}</h4>
+            <h4>Name: {details.first_name} {details.last_name}</h4>
+            {/* <h4>Last Name: {details.last_name}</h4> */}
             <p>Email: {details.email}</p>
         </div>
     </StyledUser>
