@@ -103,5 +103,37 @@ describe('User-Onboarding App', () => {
             termsInput().click()
             submitButton().should('be.disabled')
         })
+
+        it('Last name should be entered', () => {
+            firstNameInput().type('Mason')
+            emailInput().type('masonmostella@gmail.com')
+            passwordInput().type('abcdefg')
+            termsInput().click()
+            submitButton().should('be.disabled')
+        })
+
+        it('Email should be entered', () => {
+            firstNameInput().type('Mason')
+            lastNameInput().type('Mostella')
+            passwordInput().type('abcdefg')
+            termsInput().click()
+            submitButton().should('be.disabled')
+        })
+
+        it('Password should be entered', () => {
+            firstNameInput().type('Mason')
+            lastNameInput().type('Mostella')
+            emailInput().type('masonmostella@gmail.com')
+            termsInput().click()
+            submitButton().should('be.disabled')
+        })
+
+        it('Terms should be checked', () => {
+            firstNameInput().type('Mason')
+            lastNameInput().type('Mostella')
+            emailInput().type('masonmostella@gmail.com')
+            passwordInput().type('abcdefg')
+            submitButton().should('be.disabled')
+        })
     })
 })
