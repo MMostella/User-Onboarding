@@ -30,5 +30,41 @@ describe('User-Onboarding App', () => {
         cy.contains('SUBMIT').should('exist')
     })
 
-    // describe('')
+    describe('Getting inputs and canceling', () => {
+        it('Can navigate to the site', () => {
+            cy.url().should('include', 'localhost')
+        })
+
+        it('Submit button starts out disbaled', () => {
+            submitButton().should('be.disabled')
+        })
+
+        it('First name typing', () => {
+            firstNameInput()
+                .should('have.value', '')
+                .type('Mason')
+                .should('have.value', 'Mason')
+        })
+
+        it('Last name typing', () => {
+            lastNameInput()
+                .should('have.value', '')
+                .type('Mostella')
+                .should('have.value', 'Mostella')
+        })
+
+        it('Email typing', () => {
+            emailInput()
+                .should('have.value', '')
+                .type('masonmostella@gmail.com')
+                .should('have.value', 'masonmostella@gmail.com')
+        })
+
+        it('Password typing', () => {
+            passwordInput()
+                .should('have.value', '')
+                .type('abcdefg')
+                .should('have.value', 'abcdefg')
+        })
+    })
 })
