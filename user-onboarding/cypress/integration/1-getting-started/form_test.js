@@ -30,7 +30,7 @@ describe('User-Onboarding App', () => {
         cy.contains('SUBMIT').should('exist')
     })
 
-    describe('Getting inputs and canceling', () => {
+    describe('Getting inputs', () => {
         it('Can navigate to the site', () => {
             cy.url().should('include', 'localhost')
         })
@@ -65,6 +65,43 @@ describe('User-Onboarding App', () => {
                 .should('have.value', '')
                 .type('abcdefg')
                 .should('have.value', 'abcdefg')
+        })
+
+        it('Terms checkbox', () => {
+            termsInput()
+                .should('not.be.checked')
+                .click()
+                .should('be.checked')
+        })
+    })
+
+    describe('Creating a new user', () => {
+        it('Can submit a new user', () => {
+            firstNameInput().type('Mason')
+            lastNameInput().type('Mostella')
+            emailInput().type('masonmostella@gmail.com')
+            passwordInput().type('abcdefg')
+            termsInput().click()
+            submitButton().should('not.be.disabled')
+        })
+
+        it('Submitting a new user', () => {
+            firstNameInput().type('Mason')
+            lastNameInput().type('Mostella')
+            emailInput().type('masonmostella@gmail.com')
+            passwordInput().type('abcdefg')
+            termsInput().click()
+            submitButton().click()
+        })
+    })
+
+    describe('Checking text for validation', () => {
+        it('First name should be entered', () => {
+            lastNameInput().type('Mostella')
+            emailInput().type('masonmostella@gmail.com')
+            passwordInput().type('abcdefg')
+            termsInput().click()
+            submitButton().should('be.disabled')
         })
     })
 })
